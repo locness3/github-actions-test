@@ -1,0 +1,17 @@
+name: Build app for macOS and add to release
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build for mac
+      run: npm run build:mac
+    - name: Upload to release
+      uses: JasonEtco/upload-to-release@master
+      with:
+        args: dist/quick-start-macOS.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
