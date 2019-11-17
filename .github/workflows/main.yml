@@ -11,9 +11,8 @@ jobs:
       run: npm install
     - name: Build for mac
       run: npm run build:mac
-    - name: Upload to release
-      uses: JasonEtco/upload-to-release@master
-      with:
-        args: dist/quick-start-macOS.zip
+    - name: Upload to a release
+      uses: fnkr/github-action-ghr@v1.2
       env:
+        GHR_PATH: dist/quick-start-macOS.zip
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
